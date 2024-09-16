@@ -69,6 +69,8 @@ Esta aplicación es una herramienta de gestión de tareas (ToDo List) desarrolla
 └── 📁task-manager
     └── 📁app
         └── 📁api
+            └── 📁initialTasks
+                └── route.js
         └── 📁components
             └── CreateTask.js
             └── CreateTask.test.js
@@ -90,8 +92,11 @@ Esta aplicación es una herramienta de gestión de tareas (ToDo List) desarrolla
     └── 📁public
         └── 📁assets
         └── favicon.ico
+    └── .dockerignore
     └── .eslintrc.json
     └── .gitignore
+    └── docker-compose.yml
+    └── Dockerfile
     └── next-env.d.ts
     └── next.config.mjs
     └── package-lock.json
@@ -103,4 +108,3 @@ Esta aplicación es una herramienta de gestión de tareas (ToDo List) desarrolla
     └── tailwind.config.ts
     └── tsconfig.json
 ```
-
