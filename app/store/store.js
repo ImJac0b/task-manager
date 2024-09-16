@@ -1,5 +1,4 @@
-// app/store/store.js
-import create from "zustand";
+import { create } from 'zustand';
 
 const useTaskStore = create((set) => ({
   tasks: [],

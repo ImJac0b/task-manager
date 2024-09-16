@@ -12,7 +12,6 @@ const CreateTask = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validaciones
     let validationErrors = {};
     if (!title.trim()) {
       validationErrors.title = "Title is required";
