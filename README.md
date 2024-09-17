@@ -25,7 +25,7 @@ Esta aplicación es una herramienta de gestión de tareas (ToDo List) desarrolla
 1. Clona este repositorio:
 
    ```bash
-   git clone https://github.com/tu-usuario/task-manager.git
+   git clone https://github.com/ImJac0b/task-manager.git
    cd task-manager
    ```
 
