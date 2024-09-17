@@ -1,11 +1,11 @@
 "use client";
-import { useState } from 'react';
-import useTaskStore from '../store/store';
+import { useState } from "react";
+import useTaskStore from "../store/store";
 
 const CreateTask = () => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [status, setStatus] = useState('pending');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [status, setStatus] = useState("pending");
   const [errors, setErrors] = useState({});
   const addTask = useTaskStore((state) => state.addTask);
 
@@ -33,38 +33,57 @@ const CreateTask = () => {
     };
 
     addTask(newTask);
-    setTitle('');
-    setDescription('');
-    setStatus('pending');
+    setTitle("");
+    setDescription("");
+    setStatus("pending");
     setErrors({});
   };
 
   return (
     <form onSubmit={handleSubmit} className="p-6">
       <div className="mb-4">
-        <label className="block text-gray-700 font-medium mb-2">Title</label>
+        <label htmlFor="title" className="block text-gray-700 font-medium mb-2">
+          Title
+        </label>
         <input
+          id="title"
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           className="border border-gray-300 rounded-lg p-3 w-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
+        {errors.title && (
+          <p className="text-red-500 text-sm mt-1">{errors.title}</p>
+        )}
       </div>
 
       <div className="mb-4">
-        <label className="block text-gray-700 font-medium mb-2">Description</label>
+        <label
+          htmlFor="description"
+          className="block text-gray-700 font-medium mb-2"
+        >
+          Description
+        </label>
         <textarea
+          id="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           className="border border-gray-300 rounded-lg p-3 w-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        {errors.description && <p className="text-red-500 text-sm mt-1">{errors.description}</p>}
+        {errors.description && (
+          <p className="text-red-500 text-sm mt-1">{errors.description}</p>
+        )}
       </div>
 
       <div className="mb-4">
-        <label className="block text-gray-700 font-medium mb-2">Status</label>
+        <label
+          htmlFor="status"
+          className="block text-gray-700 font-medium mb-2"
+        >
+          Status
+        </label>
         <select
+          id="status"
           value={status}
           onChange={(e) => setStatus(e.target.value)}
           className="border border-gray-300 rounded-lg p-3 w-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -75,7 +94,10 @@ const CreateTask = () => {
         </select>
       </div>
 
-      <button type="submit" className="bg-blue-600 text-white p-3 rounded-lg font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+      <button
+        type="submit"
+        className="bg-blue-600 text-white p-3 rounded-lg font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
         Add Task
       </button>
     </form>

@@ -10,16 +10,26 @@ const TaskList = ({ initialTasks }) => {
   }));
 
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    setTasks(initialTasks);
-    setLoading(false);
+    const loadTasks = async () => {
+      try {
+        await setTasks(initialTasks);
+        setLoading(false);
+      } catch (err) {
+        setError("Failed to load tasks.");
+        setLoading(false);
+      }
+    };
+
+    loadTasks();
   }, [initialTasks, setTasks]);
 
   if (loading) {
     return (
       <div className="flex justify-center items-center">
-        <div className="text-center justify-center items-center flex flex-col">
+        <div className="text-center flex flex-col items-center">
           <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-16 w-16"></div>
           <p className="mt-4 text-gray-700">Loading tasks...</p>
         </div>
@@ -27,10 +37,18 @@ const TaskList = ({ initialTasks }) => {
     );
   }
 
+  if (error) {
+    return (
+      <div className="text-center text-red-500">
+        <p>{error}</p>
+      </div>
+    );
+  }
+
   return (
     <ul>
       {tasks?.length > 0 ? (
-        tasks.map((task) => <TaskItem key={task.id} task={task} />)
+        tasks?.map((task) => <TaskItem key={task.id} task={task} />)
       ) : (
         <p className="text-gray-700">No tasks available</p>
       )}
